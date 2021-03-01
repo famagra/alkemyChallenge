@@ -4,6 +4,7 @@ import { useState } from "react";
 import Axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {Container,Row,Form,FormGroup,FormControl,FormLabel,Button,Thead, Tr, Th, Table} from 'react-bootstrap';
+import "./App.css"
 
 
 
@@ -16,7 +17,7 @@ export default function App() {
   const [date, setDate] = useState("");
   const [typeOperation, setTypeOperation] = useState(0);
 
-  const [employeeList, setEmployeeList] = useState([]);
+  const [conceptList, setConceptList] = useState([]);
   const [newWage, setNewWage] = useState(0);
   const [totalEgreso, setTotalEgreso]=useState([]);
   const [totalIngreso, setTotalIngreso] = useState([]);
@@ -24,7 +25,7 @@ export default function App() {
   
 
 
-  const addEmployee = () => {
+  const addConcept = () => {
     Axios.post("http://localhost:3001/create", {
           concept: concept,
           price: price,
@@ -32,9 +33,10 @@ export default function App() {
           typeOperation: typeOperation,
       
     }).then(() => {
-      setEmployeeList([
-        ...employeeList,
+      setConceptList([
+        ...conceptList,
         {
+          
           concept: concept,
           price: price,
           date: date,
@@ -44,17 +46,17 @@ export default function App() {
     });
   };
 
-  const getEmployees = () => {
-    Axios.get("http://localhost:3001/employees").then((response) => {
-      setEmployeeList(response.data);
+  const getConcept = () => {
+    Axios.get("http://localhost:3001/consult").then((response) => {
+      setConceptList(response.data);
     });
   };
 
   const updateEmployeeWage = (id) => {
     Axios.put("http://localhost:3001/update", { wage: newWage, id: id }).then(
       (response) => {
-        setEmployeeList(
-          employeeList.map((val) => {
+        setConceptList(
+          conceptList.map((val) => {
             return val.id == id
               ? {
                   concept: concept,
@@ -69,10 +71,10 @@ export default function App() {
     );
   };
 
-  const deleteEmployee = (id) => {
+  const deleteConcept = (id) => {
     Axios.delete(`http://localhost:3001/delete/${id}`).then((response) => {
-      setEmployeeList(
-        employeeList.filter((val) => {
+      setConceptList(
+        conceptList.filter((val) => {
           return val.id != id;
         })
       );
@@ -119,7 +121,7 @@ export default function App() {
               </tr>
             </thead>
             <tbody>
-              {employeeList.map((val, key) => {
+              {conceptList.map((val, key) => {
                 return (
                   <tr>
                     <td>{val.id}</td>
@@ -136,7 +138,7 @@ export default function App() {
                       </Button>
                       <Button
                         variant="danger"
-                        onClick={() => deleteEmployee(val.id)}
+                        onClick={() => deleteConcept(val.id)}
                       >
                         Delete
                       </Button>
@@ -147,12 +149,12 @@ export default function App() {
             </tbody>
           </Table>
           <hr></hr>
-          <Button onClick={getEmployees}>Mostrar Gastos</Button>
+          <Button onClick={getConcept}>Mostrar Gastos</Button>
         </Row>
 
         <hr></hr>
         <Row>
-          <Form>
+          <Form className="formulario">
             <FormGroup>
               <FormLabel>Ingrese el nombre del Gasto</FormLabel>
               <FormControl
@@ -194,7 +196,7 @@ export default function App() {
                 }}
               ></FormControl>
             </FormGroup>
-            <Button onClick={addEmployee}>Save</Button>
+            <Button onClick={addConcept}>Save</Button>
           </Form>
         </Row>
         <Row>

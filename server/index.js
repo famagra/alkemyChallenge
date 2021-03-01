@@ -38,7 +38,7 @@ app.post("/create", (req, res) => {
 
 /* api para consultar */ 
 
-app.get("/employees", (req, res) => {
+app.get("/consult", (req, res) => {
   db.query("SELECT * FROM operation", (err, result) => {
     if (err) {
       console.log(err);
