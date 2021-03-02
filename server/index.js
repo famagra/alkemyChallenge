@@ -50,11 +50,12 @@ app.get("/consult", (req, res) => {
 
 /* api para actualizar usuario */ 
 app.put("/update", (req, res) => {
+  console.log("update");
   const id = req.body.id;
-  const typeOperation = req.body.typeOperation;
+  const concept = req.body.concept;
   db.query(
-    "UPDATE operation SET  typeOperation = ? where id = ?",
-    [typeOperation, id],
+    "UPDATE operation SET  concept = ? where id = ?",
+    [concept, id],
     (err, result) => {
       if (err) {
         console.log(err);
