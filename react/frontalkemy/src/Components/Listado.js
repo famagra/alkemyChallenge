@@ -69,8 +69,10 @@ export default function Listado() {
 
     return (
       <div>
+        <h2 className="pt-5 pb-5 text-center text-danger border bg-dark">
+          Listado de gastos
+        </h2>
         <Row className="listado">
-          <h4>Listado de gastos</h4>
           <Table striped bordered hover size="sm">
             <thead>
               <tr>

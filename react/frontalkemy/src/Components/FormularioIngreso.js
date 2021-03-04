@@ -39,13 +39,18 @@ export default function FormularioIngreso() {
 
 
     return (
-
-
       <div>
-        <Form className="formulario">
-          <FormGroup>
-            <FormLabel>Ingrese el nombre del Gasto</FormLabel>
+        <h2 className="pt-5 pb-5 text-center text-danger border bg-dark">
+          {" "}
+          GASTOS{" "}
+        </h2>
+        <Form className="formulario mt-5 mb-5 text-center">
+          <FormGroup className="text-center">
+            <FormLabel className="text-center">
+              Ingrese el nombre del Gasto
+            </FormLabel>
             <FormControl
+              className="text-center"
               type="text"
               name="concept"
               onChange={(event) => {
@@ -56,6 +61,7 @@ export default function FormularioIngreso() {
           <FormGroup>
             <FormLabel>Ingrese el nombre Importe</FormLabel>
             <FormControl
+              className="text-center"
               type="text"
               name="price"
               placeholder="ingrese el importe"
@@ -67,6 +73,7 @@ export default function FormularioIngreso() {
           <FormGroup>
             <FormLabel>Ingrese la fecha</FormLabel>
             <FormControl
+              className="text-center"
               type="date"
               name="date"
               onChange={(event) => {
@@ -77,6 +84,7 @@ export default function FormularioIngreso() {
           <FormGroup>
             <FormLabel>Ingrese tipo de gasto</FormLabel>
             <FormControl
+              className="text-center"
               type="text"
               name="typeOperation"
               onChange={(event) => {

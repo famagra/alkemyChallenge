@@ -32,19 +32,12 @@ export default function App() {
       <Container className="titulo">
         <NavBar />
       </Container>
-
+      <Container>
+        <FormularioIngreso />
+      </Container>
       <Container>
         <Listado />
-
-        <Row>
-          
-            <FormularioIngreso />
-        </Row>
-        <Row>
-          
-            <Balance />
-          
-        </Row>
+        <Balance />
       </Container>
     </div>
   );
