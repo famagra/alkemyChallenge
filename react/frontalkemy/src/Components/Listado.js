@@ -28,8 +28,7 @@ export default function Listado() {
 
     const [conceptList, setConceptList] = useState([]);
     const [newConcept, setNewConcept] = useState(0);
-    const [totalEgreso, setTotalEgreso] = useState([]);
-    const [totalIngreso, setTotalIngreso] = useState([]);
+    
 
       const getConcept = () => {
         Axios.get("http://localhost:3001/consult").then((response) => {
@@ -69,14 +68,14 @@ export default function Listado() {
 
     return (
       <div>
-        <h2 className="pt-5 pb-5 text-center text-danger border bg-dark">
+        <h2 className="pt-5 pb-5 text-center text-white border bg-dark">
           Listado de gastos
         </h2>
-        <Row className="listado">
+        <Row className="text-center ml-auto mr-auto">
           <Table striped bordered hover size="sm">
             <thead>
               <tr>
-                <th>#</th>
+                <th>Numero</th>
                 <th>Gasto</th>
                 <th>Precio</th>
                 <th>Fecha</th>
@@ -113,7 +112,12 @@ export default function Listado() {
             </tbody>
           </Table>
 
-          <Button onClick={getConcept}>Mostrar Gastos</Button>
+          <Button
+            className="btn btn-lg btn-success text-center ml-auto mr-auto"
+            onClick={getConcept}
+          >
+            Mostrar Gastos
+          </Button>
         </Row>
       </div>
     );

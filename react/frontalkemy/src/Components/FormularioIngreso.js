@@ -40,11 +40,11 @@ export default function FormularioIngreso() {
 
     return (
       <div>
-        <h2 className="pt-5 pb-5 text-center text-danger border bg-dark">
+        <h2 className="pt-5 pb-5 text-center text-white border bg-dark">
           {" "}
           GASTOS{" "}
         </h2>
-        <Form className="formulario mt-5 mb-5 text-center">
+        <Form className="mt-5 mb-5 text-center w-75 ml-auto mr-auto">
           <FormGroup className="text-center">
             <FormLabel className="text-center">
               Ingrese el nombre del Gasto
@@ -92,7 +92,9 @@ export default function FormularioIngreso() {
               }}
             ></FormControl>
           </FormGroup>
-          <Button onClick={addConcept}>Save</Button>
+          <Button className="btn btn-lg btn-success" onClick={addConcept}>
+            Guardar
+          </Button>
         </Form>
       </div>
     );
