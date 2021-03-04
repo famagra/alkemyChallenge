@@ -37,12 +37,13 @@ export default function App() {
         <Listado />
 
         <Row>
-          <Col>
+          
             <FormularioIngreso />
-          </Col>
-          <Col>
+        </Row>
+        <Row>
+          
             <Balance />
-          </Col>
+          
         </Row>
       </Container>
     </div>
