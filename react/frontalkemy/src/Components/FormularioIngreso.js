@@ -2,19 +2,11 @@ import React from 'react'
 import Axios from "axios";
 import { useState } from "react";
 import {
-  Container,
-  Row,
   Form,
   FormGroup,
   FormControl,
   FormLabel,
   Button,
-  Thead,
-  Tr,
-  Th,
-  Table,
-  Col,
-  Nav,
 } from "react-bootstrap";
 
 export default function FormularioIngreso() {
@@ -23,12 +15,9 @@ export default function FormularioIngreso() {
         const [price, setPrice] = useState(0);
         const [date, setDate] = useState("");
         const [typeOperation, setTypeOperation] = useState(0);
-
         const [conceptList, setConceptList] = useState([]);
-        const [newConcept, setNewConcept] = useState(0);
-        const [totalEgreso, setTotalEgreso] = useState([]);
-        const [totalIngreso, setTotalIngreso] = useState([]);
-
+        
+        
       const addConcept = () => {
         Axios.post("http://localhost:3001/create", {
           concept: concept,
