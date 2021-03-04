@@ -20,7 +20,6 @@ app.post("/create", (req, res) => {
   const concept = req.body.concept;
   const price = req.body.price;
   const date = req.body.date;
- 
   const typeOperation = req.body.typeOperation;
 
   db.query(
