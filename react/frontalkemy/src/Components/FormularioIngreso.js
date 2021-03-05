@@ -7,6 +7,7 @@ import {
   FormControl,
   FormLabel,
   Button,
+  Select,
 } from "react-bootstrap";
 
 export default function FormularioIngreso() {
@@ -53,6 +54,7 @@ export default function FormularioIngreso() {
               className="text-center"
               type="text"
               name="concept"
+              placeholder="ingrese el nombre"
               onChange={(event) => {
                 setConcept(event.target.value);
               }}
@@ -92,6 +94,7 @@ export default function FormularioIngreso() {
               }}
             ></FormControl>
           </FormGroup>
+          
           <Button className="btn btn-lg btn-success" onClick={addConcept}>
             Guardar
           </Button>

@@ -48,13 +48,14 @@ app.get("/consult", (req, res) => {
 });
 
 /* api para actualizar usuario */ 
-app.put("/update", (req, res) => {
-  console.log("update");
+app.put("/update/", (req, res) => {
+  
   const id = req.body.id;
-  const concept = req.body.concept;
+  const concept = req.body.ActualizarGasto;
+  const price = req.body.ActualizarPrecio;
   db.query(
-    "UPDATE operation SET  concept = ? where id = ?",
-    [concept, id],
+    "UPDATE operation SET concept = ? price = ? where id = ?",
+    [concept, id,price],
     (err, result) => {
       if (err) {
         console.log(err);
@@ -63,11 +64,13 @@ app.put("/update", (req, res) => {
       }
     }
   );
+  
 });
 
 /* api para borrar usuario */ 
 app.delete("/delete/:id", (req, res) => {
   const id = req.params.id;
+  console.log(id);
   db.query("DELETE from operation where id= ?", id, (err, result) => {
     if (err) {
       console.log(err);

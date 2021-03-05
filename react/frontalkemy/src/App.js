@@ -1,21 +1,18 @@
 import React from "react";
-import { useState } from "react";
-import Axios from "axios";
+
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import {
-  Container,
-  
-} from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import NavBar from "../src/Components/Navbar";
-import "./App.css";
+import Actualizar from "../src/Components/Actualizar";
 import Listado from "./Components/Listado";
 import FormularioIngreso from "./Components/FormularioIngreso";
 import Balance from "./Components/Balance";
 
 export default function App() {
   return (
-    <div>
-        <NavBar />
+    <Router>
+      <NavBar />
       <Container>
         <FormularioIngreso />
       </Container>
@@ -23,6 +20,11 @@ export default function App() {
         <Listado />
         <Balance />
       </Container>
-    </div>
+      <Switch>
+        <Route path="/actualizar">
+          <Actualizar />
+        </Route>
+      </Switch>
+    </Router>
   );
 }

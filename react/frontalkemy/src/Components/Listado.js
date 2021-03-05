@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   Container,
@@ -15,20 +16,13 @@ import {
   Table,
   Col,
   Nav,
+  Modal,
 } from "react-bootstrap";
 import Axios from "axios";
 
 export default function Listado() {
 
-    
-    const [concept, setConcept] = useState("");
-    const [price, setPrice] = useState(0);
-    const [date, setDate] = useState("");
-    const [typeOperation, setTypeOperation] = useState(0);
-
-    const [conceptList, setConceptList] = useState([]);
-    const [newConcept, setNewConcept] = useState(0);
-    
+  const [conceptList, setConceptList] = useState([]);
 
       const getConcept = () => {
         Axios.get("http://localhost:3001/consult").then((response) => {
@@ -36,25 +30,7 @@ export default function Listado() {
         });
       };
 
-      const updateEmployeeWage = (id) => {
-        Axios.put("http://localhost:3001/update", {
-          concept: newConcept,
-          id: id,
-        }).then((response) => {
-          setConceptList(
-            conceptList.map((val) => {
-              return val.id == id
-                ? {
-                    concept: concept,
-                    price: price,
-                    date: date,
-                    typeOperation: typeOperation,
-                  }
-                : val;
-            })
-          );
-        });
-      };
+      
 
       const deleteConcept = (id) => {
         Axios.delete(`http://localhost:3001/delete/${id}`).then((response) => {
@@ -68,6 +44,8 @@ export default function Listado() {
 
     return (
       <div>
+        
+
         <h2 className="pt-5 pb-5 text-center text-white border bg-dark">
           Listado de gastos
         </h2>
@@ -85,7 +63,9 @@ export default function Listado() {
             </thead>
             <tbody>
               {conceptList.map((val, key) => {
+                console.log(val);
                 return (
+                  
                   <tr>
                     <td>{val.id}</td>
                     <td>{val.concept}</td>
@@ -93,17 +73,20 @@ export default function Listado() {
                     <td>{val.date}</td>
                     <td>{val.typeOperation}</td>
                     <td>
-                      <Button
+                      <Link
                         variant="warning"
-                        onClick={() => updateEmployeeWage(val.id)}
+                        className="m-2"
+                        to ="/actualizar"
                       >
-                        Update
-                      </Button>
+                        Actualizar
+                      </Link>
+
                       <Button
                         variant="danger"
+                        className="m-2"
                         onClick={() => deleteConcept(val.id)}
                       >
-                        Delete
+                        Borrar
                       </Button>
                     </td>
                   </tr>
